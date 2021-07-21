@@ -42,7 +42,7 @@ void bsp_init( void )
     bsp_timer_init(event_timer_tick, TICK_TIMERx_TICKFREQ);
     bsp_uart_serial_init(event_uart_serial_recv);
     bsp_sensor_init();
-//    bsp_tft_init();
+    bsp_tft_init();
     klogd("\n");
     bsp_timer_enable(ENABLE);
     
@@ -68,6 +68,7 @@ int main( void )
                     lsb[1] = msc * (1000.0f / TICK_TIMERx_TICKFREQ);
                     bsp_sensor_get_lsb(&lsb[2]);
                     kSerial_SendPacket(NULL, lsb, 12, KS_I16);
+										break;
                 }
                 case 2:
                 {
@@ -79,6 +80,7 @@ int main( void )
                         raw[3], raw[4], raw[5],
                         raw[6], raw[7], raw[8],
                         raw[9], raw[10], raw[11]);
+										break;
                 }
                 default:
                 {
@@ -90,6 +92,7 @@ int main( void )
                         raw[3], raw[4], raw[5],
                         raw[6], raw[7], raw[8],
                         raw[9], raw[10], raw[11]);
+										break;
                 }
             }
         }
